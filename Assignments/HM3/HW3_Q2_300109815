@@ -1,0 +1,16 @@
+def two_length_run(double):
+    repeated_value = []
+    for x in range(len(double)):
+        y = x+1
+        for i in range(y, len(double)):
+            if double[x]==double[i] and double[x] not in repeated_value:
+                repeated_value.append(double[x])
+                return True
+        
+                        
+        
+print(two_length_run((input("Enter a list of numbers: ")).strip().split()))
+
+
+
+
