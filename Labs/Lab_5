@@ -1,0 +1,91 @@
+#exercise1
+
+def average(elements):
+    return sum(elements)/len(elements)
+   
+
+
+elements = []
+number_of_elements = int(input("Enter how many numbers you want in the list: "))
+for i in range (0,number_of_elements):
+    number = int(input("Enter a random number: "))
+    elements.append(number)
+
+avg = average(elements)
+print("The average of the values in this list is", avg)
+
+#exercise2
+
+marks = []
+number_of_students = int(input("Enter how many students there are: "))
+for i in range (0, number_of_students):
+    percent = int(input("Enter each students marks: "))
+    marks.append(percent)
+
+def mean(marks):
+    return sum(marks)/len(marks)
+
+def max_mum(marks):
+    largest = marks[0]
+    for x in marks:
+        if x > largest:
+            largest = x
+    return largest
+
+def min_mum(marks):
+    smallest = marks[0]
+    for y in marks:
+        if y < smallest:
+            smallest = y
+    return smallest
+
+    
+avrg = mean(marks)
+maximum = max_mum(marks)
+minimum = min_mum(marks)
+print("The average is", avrg, ", the highest mark is", maximum, "and the lowest mark is" , minimum)
+
+#exercise3
+
+import math
+distance=[]
+
+def dist(distance):
+    v = int(input("Enter the speed at which the ball will be thrown: "))
+    for z in range(0,9):
+        theta = z
+        theta_r= (math.pi/180)*theta
+        d = ((2*(v**2))*math.cos(theta_r)*math.sin(theta_r))/(9.8)
+        distance.append(d)
+    return distance
+        
+ball_toss = dist(distance)
+print(ball_toss)
+
+#exercise4
+
+import math
+grades=[]
+
+def st_dev(grades):
+    a = sum(grades)/len(grades)
+    for u in (grades):
+        add = (grades[0]-a)**2
+        s = math.sqrt(add/int(len(grades)-1))
+    return s
+    
+    
+
+number_of_grades = int(input("Enter the number of grades you will be inputting: "))
+for z in range (0,number_of_grades):
+    mrk = int(input("Enter the grade: "))
+    grades.append(mrk)
+
+standard_dev= st_dev(grades)
+print("The standard deviation of all the grades is", standard_dev)
+
+
+
+
+
+
