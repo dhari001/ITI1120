@@ -1,0 +1,296 @@
+
+class Point:
+    'class that represents a point in the plane'
+
+    def __init__(self, xcoord=0, ycoord=0):
+        ''' (Point,number, number) -> None
+        initialize point coordinates to (xcoord, ycoord)'''
+        self.x = xcoord
+        self.y = ycoord
+
+    def setx(self, xcoord):
+        ''' (Point,number)->None
+        Sets x coordinate of point to xcoord'''
+        self.x = xcoord
+
+    def sety(self, ycoord):
+        ''' (Point,number)->None
+        Sets y coordinate of point to ycoord'''
+        self.y = ycoord
+
+    def get(self):
+        '''(Point)->tuple
+        Returns a tuple with x and y coordinates of the point'''
+        return (self.x, self.y)
+
+    def move(self, dx, dy):
+        '''(Point,number,number)->None
+        changes the x and y coordinates by dx and dy'''
+        self.x += dx
+        self.y += dy
+
+    def __eq__(self, other):
+        '''(Point,Point)->bool
+        Returns True if self and other have the same coordinates'''
+        return self.x == other.x and self.y == other.y
+    def __repr__(self):
+        '''(Point)->str
+        Returns canonical string representation Point(x, y)'''
+        return 'Point('+str(self.x)+','+str(self.y)+')'
+    def __str__(self):
+        '''(Point)->str
+        Returns nice string representation Point(x, y).
+        In this case we chose the same representation as in __repr__'''
+        return 'Point('+str(self.x)+','+str(self.y)+')'
+
+class Rectangle:
+    '''represents rectangle in plane'''
+
+    def __init__(self,bl,tr,color):
+        '''
+        Rectangle, Point, Point, str --> None
+        creates object rectangle
+        '''
+
+        self.bl = bl
+        self.tr = tr
+        self.color = color
+
+    def get_color(self):
+        '''
+        Rectangle --> str
+        returns color of object
+        '''
+
+        return self.color
+
+    def get_bottom_left(self):
+        '''
+        Rectangle --> Point
+        returns bottom left point of rectangle
+        '''
+        
+        return self.bl
+
+    def get_top_right(self):
+        '''
+        Rectangle --> Point
+        returns top right point of rectangle
+        '''
+
+        return self.tr
+
+    def reset_color(self, newColor):
+        '''
+        Rectangle, str --> None
+        change color of rectangle
+        '''
+
+        self.color = newColor
+
+    def get_perimeter(self):
+        '''
+        Rectangle --> num
+        calculates perimeter of rectangle
+        '''
+
+        length1 = self.tr.get()[0] - self.bl.get()[0]
+        length2 = self.tr.get()[1] - self.bl.get()[1]
+        return 2*(length1+length2)
+
+    def get_area(self):
+        '''
+        Rectangle --> num
+        calculates area of rectangle
+        '''
+
+        length1 = self.tr.get()[0] - self.bl.get()[0]
+        length2 = self.tr.get()[1] - self.bl.get()[1]
+        return length1*length2
+
+    def move(self, dx, dy):
+        '''
+        Rectangle --> none
+        moves the rectangle by dx in x direction and by dy in y direction
+        '''
+
+        self.bl.move(dx,dy)
+        self.tr.move(dx,dy)
+
+    def intersects(self, rectangle):
+        '''
+        Rectangle, rectangle --> bool
+        verifies if two rectangles intersect
+        '''
+
+        bl_x1 = self.bl.get()[0]
+        bl_y1 = self.bl.get()[1]
+        tr_x1 = self.tr.get()[0]
+        tr_y1 = self.tr.get()[1]
+
+        bl_x2 = rectangle.bl.get()[0]
+        bl_y2 = rectangle.bl.get()[1]
+        tr_x2 = rectangle.tr.get()[0]
+        tr_y2 = rectangle.tr.get()[1]
+
+        if (tr_x2 < bl_x1 or tr_x1 < bl_x2):
+            return False
+        elif (tr_y2 < bl_y1 or tr_y1 < bl_y2):
+            return False
+        else:
+            return True
+
+    def contains(self, x, y):  
+        '''
+        Rectangle, num, num --> bool
+        verify if point is contained in other rectangle
+        '''
+
+        if ((self.bl.get()[0] <= x and self.tr.get()[0] >= x) and (self.bl.get()[1] <= y and self.tr.get()[1] >= y)):
+            return True
+        else:
+            return False
+
+    def __eq__(self, rectangle):
+        '''
+        Rectangle, rectangle, --> bool
+        verifies if both rectangles are equal
+        '''
+
+        if(self.bl == rectangle.bl and self.tr == rectangle.tr and self.color == rectangle.color):
+            return True
+        else:
+            return False
+
+
+    def __repr__(self):
+        '''
+        Rectangle --> str
+        return description of rectangle in coordinate form
+        '''
+
+        return 'Rectangle('+str(self.bl)+','+str(self.tr)+',\''+str(self.color)+'\')'
+
+    def __str__(self):
+        '''
+        Rectangle --> str
+        return description of rectangle in words
+        '''
+
+        return "I am a "+self.color+" rectangle with bottom left corner at "+str(self.bl)+" and top right corner at "+str(self.tr)+"."
+
+
+class Canvas:
+    '''collection of rectangles'''
+
+    def __init__(self,rectangles = []):
+        '''
+        canvas, list of rectangles --> None
+        '''
+        self.rectangles = rectangles.copy()
+
+
+    def add_one_rectangle(self, rectangle):
+        '''
+        canvas, rectangle --> None
+        adds rectangle to canvas
+        '''
+
+        self.rectangles.append(rectangle)
+
+    def count_same_color(self, color): 
+        '''
+        canvas, str --> num
+        counts how many rectangles have same color chosen by user
+        '''
+
+        i=0
+        for rec in self.rectangles:
+            if(rec.get_color() == color):
+                i+=1
+        return i
+
+    def total_perimeter(self):
+        '''
+        canvas --> num
+        perimeter of all the rectangles in canvas totaled
+        '''
+
+        totalPer = 0
+        for rec in self.rectangles:
+            totalPer+= rec.get_perimeter()
+        return totalPer
+
+    def min_enclosing_rectangle(self):
+        '''
+        canvas --> rectangle
+        finds min enclosing rectangle in canvas
+        '''
+
+       
+
+        for rec in self.rectangles:
+            s1 = rec.get_bottom_left().get()[0]
+            s2 = rec.get_bottom_left().get()[1]
+            s3 = rec.get_top_right().get()[0]
+            s4 = rec.get_top_right().get()[1]
+            if self.rectangles.index(rec) == 0:
+                 min_x = s1
+                 min_y = s2
+                 max_x = s3
+                 max_y = s4
+            else:
+                if(s1 < min_x):
+                    min_x = s1
+                if(s2 < min_y):
+                    min_y = s2
+                if(s3 > max_x):
+                    max_x = s3
+                if(s4 > max_y):
+                    max_y = s4
+
+        return Rectangle(Point(min_x, min_y), Point(max_x, max_y), 'red')
+
+    def common_point(self):
+        '''
+        canvas --> bool
+        checks if there is a point where all rectangles intersect (done using Helly's theorem)
+        '''
+            
+        for i in range(len(self.rectangles)-1):
+            rec1 = self.rectangles[i]
+            for j in range(i+1, len(self.rectangles)):
+                rec2 = self.rectangles[j]
+                if(not(rec1.intersects(rec2))):
+                    return False
+        return True
+        
+
+    def __repr__(self):
+        '''
+        canvas --> str
+        returns collection of rectangles
+        '''
+
+        return 'Canvas('+str(self.rectangles)+')'
+
+    def __len__(self):
+        '''
+        canvas --> num
+        returns number of rectangles in canvas
+        '''
+
+        return len(self.rectangles)
+
+    
+
+
+
+    
+        
+        
+
+        
+        
+
+            
