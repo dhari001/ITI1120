@@ -1,0 +1,130 @@
+import string
+
+def open_file():
+    '''None->file object
+    See the assignment text for what this function should do'''
+    True
+    while True:
+        file = input("Enter file name you want to open with the file type: ")
+        try:
+            return open(file)
+        except:
+            True
+    # YOUR CODE GOES HERE
+    pass
+
+def read_file(fp):
+    '''file object->dictionary
+    reads the file provided by the user and converts it into a dictionary
+    each word will have a number (the line where it appears) associated with it
+    Precondition: fp must be a file object    
+    '''
+
+    dictionary = conversion(fp)
+    return dictionary
+
+    
+
+def conversion(fp):
+    '''
+    file object --> dictionary
+    takes file and in each line strips all punctuation from it
+    splits all lines into a list of strings
+    verifies words are all over 1 character in length
+    also adds words and line number to dictionary
+    Pre-condition: text is a file
+    '''
+    text = fp.read().splitlines()
+
+    words_from_line = []
+    line_counter = 1
+
+    dictionary = {}
+
+    for i in range(len(text)):
+        line = text[i]
+        line = line.lower()
+        line = ''.join(filter(to_filter, line))
+        words_from_line = line.strip().split(" ")
+        for word in words_from_line:
+            if (len(word) > 1):
+                dictionary = change_dict(dictionary, line_counter, word)
+        line_counter += 1
+
+    
+    return dictionary
+
+def change_dict(d, line_num, word):
+    '''
+    dictionary --> dictionary
+    will add words and corresponding line numbers to dictionary
+    Precondition: d type dictionary, line_num type int, and word type string
+    '''
+    if (word not in d):
+        d[word] = set()
+        d[word].add (line_num)
+    else:
+        d[word].add(line_num)
+
+    return d
+
+def to_filter(character):
+    '''
+    string --> boolean
+    makes sures that character is either a space or a letter
+    Precondition: character must be a string
+    '''
+    if (character == " "):
+        return True
+    elif (character in string.punctuation):
+        return False
+    elif (character.isalpha):
+        return True
+    else:
+        return False
+
+def find_coexistance(D, query):
+    '''(dict,str)->list
+    See the assignment text for what this function should do'''
+    query= ''.join(filter(to_filter, query))
+    query = query.split(" ")
+
+    set_lines = []
+
+    if (len(query) == 1):
+        if (query[0] in D):
+            set_lines = list(D[query[0]])
+            set_lines.sort()
+            return set_lines
+    else:
+        for i in range(1,len(query)):
+            if (query[i-1] in D and query[i] in D):
+                set_lines = D[query[i-1]].intersection(D[query[i]])
+        set_lines = list(set_lines)
+        set_lines.sort()
+        
+        return set_lines
+    # YOUR CODE GOES HERE
+    pass
+    
+
+##############################
+# main
+##############################
+file=open_file()
+d=read_file(file)
+query=input("Enter one or more words separated by spaces, or 'q' to quit: ").strip().lower()
+
+while (query.lower() != "q"):
+    intersect_set = find_coexistance(d, query)
+    if (intersect_set == None):
+        print (query + " not in file")
+    elif (len(intersect_set) == 0):
+        print (query + " not in file")
+    else:
+        print ("The one or more words you entered coexisted in the following lines of the file:")
+        print(str(intersect_set))
+    query=input("Enter one or more words separated by spaces, or 'q' to quit: ").strip().lower()
+
+# YOUR CODE GOES HERE
+
