@@ -1,0 +1,23 @@
+#exercise1
+def numList(L,n):
+    if len(L) == (n+1):
+        return L 
+    else:
+        numList(L,n-1)
+        L.append(n)
+        print (L)
+L = []
+numList(L,4)
+
+
+
+#exercise2
+def bcd (a,b):
+    r = a%b
+    a = b
+    if (r != 0):
+        bcd(a,r)
+    else:
+        print(a) 
+
+bcd(36,20)
