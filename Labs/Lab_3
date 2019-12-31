@@ -1,0 +1,61 @@
+#Exercise1
+
+
+def ageMatch(age):
+    if (age >= 18 and age <= 55):
+        print("Transaction accepted")
+
+    else:
+        print("Transaction refused")
+
+
+user_age = int(input("Enter an age: "))
+transaction_check = ageMatch(user_age)
+
+
+#Exercise2
+
+def chooseActivity(temperature):
+    if (temperature >= 80):
+        print("Swimming")
+    elif (60<= temperature < 80):
+        print("Soccer")
+    elif (40 <= temperature < 60):
+        print("Volleyball")
+    elif (temperature < 40):
+        print("Skying")
+
+temp = int(input("What is the temperature today?: "))
+activity = chooseActivity(temp)
+
+#Exercise3
+
+def isDivisible(integer):
+    if (integer%2 == 0 and integer%3 == 0):
+        print("1")
+    elif (integer%2 == 0  or integer%3 == 0):
+        print("2")
+    elif (integer%2 > 0 and integer%3 > 0 ):
+        print("3")
+
+integer_value = int(input("Enter an integer value: "))
+divisibility = isDivisible(integer_value)
+
+#Exercise4
+
+def numOfRoots(a,b,c):
+    if ((b**2 - (4*a*c)) < 0):
+        print("No real roots")
+    elif ((b**2 - (4*a*c)) == 0):
+        print("One real root")
+    elif ((b**2 - (4*a*c)) > 0):
+        print("Two real roots")
+
+coefficient_a = float(input("Enter a value for the coefficient 'a': "))
+coefficient_b = float(input("Enter a value for the coefficient 'b': "))
+coefficient_c = float(input("Enter a value for the coefficient 'c': "))
+
+determine_roots = numOfRoots(coefficient_a, coefficient_b, coefficient_c)
+
+
+
