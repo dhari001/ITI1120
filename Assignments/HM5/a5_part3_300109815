@@ -1,0 +1,33 @@
+def stars(n):
+    if n<= 0:
+        print()
+    else:
+        print('*'*n)
+        stars(n-1)
+        print('*'*n)
+
+stars(int(input("Enter a non-negative number: ")))
+
+
+        
+def sumListPos_rec(l,n):
+    '''
+    list,int -->int
+    returns sum of positive numbers in list
+    '''
+    if n==1:
+        if l[n-1] > 0:
+            return l[n-1]
+        else:
+            return 0
+    else:
+        num = l[0]
+        if num <0:
+            num = 0
+    return num + sumListPos_rec(l[1:],n-1)
+
+l = [1,-2,5,0,-5]
+print(sumListPos_rec(l, len(l)))
+
+
+    
