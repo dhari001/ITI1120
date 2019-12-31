@@ -1,0 +1,11 @@
+def count_pos(numbers): 
+    pos = 0
+    for x in numbers:
+        if x >= 0:
+            pos+=1
+    return pos
+    
+    
+
+print(count_pos([float(i) for i in (((input("Enter a list of real values seperated by space: ")).strip().split()))]))
+
