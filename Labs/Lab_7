@@ -1,0 +1,61 @@
+#exercise1
+def histogram(chrc_chain):
+    hist= {}
+    for x in chrc_chain:
+        hist[x] = hist.get(x,0) +1
+        sorted_hist = list(hist.items())
+        sorted_hist.sort()
+    return sorted_hist
+print(histogram(input("Enter a character chain: ")))
+
+
+#exercise2
+def histo_n(nums):
+    oxford = {}
+    for x in nums:
+        x = oxford.get(x,0) + 1
+    ascending = list(oxford.items())
+    ascending = ascending.sort()
+    return ascending
+print(histo_n(int(input("Enter: "))))
+
+
+#exercis33
+def sum_of_three(add):
+    sum_3 = 0
+    for i in range(0,3):
+        y = int(add[i])
+        sum_3 += y
+    if sum_3 == 0:
+        return True
+
+add = ()
+print(sum_of_three(tuple(input("Enter integers with no spaces between them: "))))
+        
+    
+
+#exercise4
+
+def move_zeros(lst):
+     front=0
+     back=len(lst)-1
+     while(front<back):
+          if(lst[front]==0 and lst[back]!=0):
+               lst[front]=lst[back]
+               lst[back]=0
+               front=front+1 
+               back=back-1
+          elif (lst[front]==0 and lst[back]==0):
+               back=back-1
+          else:
+               front=front+1
+
+x = [1, 0, 3, 0, 0, 5, 7] 
+print(x)
+move_zeros(x)
+print(x)
+        
+    
+
+
+
