@@ -1,0 +1,24 @@
+def bmi(p, t):
+    bodymax = (p/(t**2))
+    ## complete your work here ##
+    ## return something for now
+    return bodymax
+
+def print_bmi_level(bodymax):
+    if bodymax < 18.5:
+        print("underweight")
+    elif 18.5 <= bodymax < 25:
+        print("normal weight")
+    elif 25 <= bodymax < 30:
+        print("overweight")
+    elif bodymax < 30:
+        print("obese")    
+    ## complete your work here ##
+    return bodymax
+
+p = float(input("Enter your weight in kilograms "))
+t = float(input("Enter your height in meters "))
+
+bodymax = bmi(p,t)
+print("Your BMI is", bodymax)
+print_bmi_level(bodymax)
