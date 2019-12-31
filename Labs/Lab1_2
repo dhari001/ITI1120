@@ -1,0 +1,89 @@
+#Exercise1:
+
+num_1 = int(input("give a real value:"))
+num_2= int(input("give another real value:"))
+division = num_1//num_2 
+remainder = num_1%num_2
+print(division)
+print(remainder)
+
+
+
+print() #to separate the exercises
+
+
+
+#Exercise2:
+
+def celsius_to_farenheit(temp_c):
+    temp_f = temp_c*(9/5)+32 #alogrithm to convert celsius into farenheit
+    return temp_f
+
+t_celsius = 24 
+t_farenheit = celsius_to_farenheit(t_celsius)  #will pass the parameter "t_celsius" through the conversion function
+print(t_celsius, "degrees celsius is", t_farenheit, "in farenheit.")
+
+t_celsius = 102
+t_farenheit = celsius_to_farenheit(t_celsius)  #will pass the parameter "t_celsius" through the conversion function
+print(t_celsius, "degrees celsius is", t_farenheit, "in farenheit.")
+
+t_celsius = 45
+t_farenheit = celsius_to_farenheit(t_celsius)  #will pass the parameter "t_celsius" through the conversion function
+print(t_celsius, "degrees celsius is", t_farenheit, "in farenheit.")
+
+
+
+
+print() #to separate the exercises
+
+
+
+#Exercise3:
+
+def compute_mark(hmw_avg, midterm, final):
+    mark = (hmw_avg*(25/100)+midterm*(25/100)+final*(50/100)) #algorithm to compute course mark
+    return mark
+
+
+#assumption: hmw_avg, midterm and final > 0
+
+hmw_mark = int(input("Enter your mark for homework: "))
+midterm_mark= int(input("Enter your midterm mark: "))
+final_mark = int(input("Enter your marks for the final exam: "))
+
+semester_mark = compute_mark(hmw_mark, midterm_mark, final_mark) #will pass all three parameters of different marks and use the function of computing mark
+print("Your mark for the semester is, ", semester_mark, '%')
+
+
+
+print() #to separate the exercises
+
+
+
+#Exercise4:
+
+def computedArea(side1, side2, side3):
+    p = side1+side2+side3
+    from math import sqrt
+    area = (sqrt(p*(p-(2*side1))*(p-(2*side2))*(p-(2*side3))))/4 #algorithm to calculate area
+    return area
+    
+#assumption: side1, side2 and side3 > 0
+    
+length1= int(input("Enter a real value: "))
+length2= int(input("Enter another real value: "))
+length3= int(input("Enter another real value: "))
+ 
+area_of_triangle = computedArea(length1, length2, length3) #will pass the parameters of side lenghts of the triangle through the algorithm which computes area
+print("the area of the triangle is", area_of_triangle)
+
+
+
+
+
+
+
+
+
+
+
