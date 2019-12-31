@@ -1,0 +1,48 @@
+def roman_v1(roman_numeral):
+   m =  roman_numeral.count('M')
+   d = roman_numeral.count('D')
+   c = roman_numeral.count('C')
+   x = roman_numeral.count('X')
+   v = roman_numeral.count('V')
+   i = roman_numeral.count('I')
+
+   final = m*1000 + d*500 + c*100 + x*10 + v*5 + i*1
+   return final
+
+
+def roman_v2(roman_numeral):
+    roman_int = []
+    for x in range(0, len(roman_numeral)):
+        if roman_numeral[x] == 'M':
+            roman_int.append(int(1000))
+        elif roman_numeral[x] == 'D':
+            roman_int.append(int(500))
+        elif roman_numeral[x] == 'C':
+            roman_int.append(int(100))
+        elif roman_numeral[x] == 'X':
+            roman_int.append(int(10))
+        elif roman_numeral[x] == 'V':
+            roman_int.append(int(5))
+        elif roman_numeral[x] == 'I':
+            roman_int.append(int(1))
+    roman_int.sort()
+    final = 0
+
+    for i in range(0, len(roman_int)):
+        if roman_int[i] == 1:
+            final +=1
+        elif roman_int[i] == 5:
+            final += 5
+        elif roman_int[i] == 10:
+            final += 10
+        elif roman_int[i] == 100:
+            final += 100
+        elif roman_int[i] == 500:
+            final += 500
+        elif roman_int[i] == 1000:
+            final += 1000
+    return final
+
+        
+print(roman_v1((input("Enter roman numeral: "))))
+print(roman_v2((input("Enter roman numeral: "))))
