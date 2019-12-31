@@ -1,0 +1,80 @@
+#exercise1
+#counter = 10
+#while(counter >= 0): #should be less than equal to 1 so that loop stops when counter=1
+    #print(counter)
+    #counter = counter + 1 #"counter - 1" to ensure that it decreases from 10 and not increases because then the loop will never end
+
+#correct code below:
+counter = 10
+while(counter >= 1):
+    print(counter)
+    counter -= 1 1
+
+
+#exercise2
+
+#with a for loop
+def display(N):
+    for x in range(1,N+1):
+        print(x)
+    return (N)
+
+N= int(input("Please provide a value for N: "))
+display(N)
+#with a while loop
+def display_2(N):
+    i = 1
+    while i <= N:
+        print(i)
+        i += 1
+    return i
+
+i = int(input("Please provide a value for i: "))
+display_2(i)
+
+
+#exercise3
+def guess():
+    import random
+    i = 0
+    answer = random.randint(1,10)
+    estimate = -1
+    while estimate != answer:
+        estimate = int(input("Guess the number: "))
+        if estimate > answer:
+            i += 1
+            print("Lower")
+        elif estimate < answer:
+            i += 1
+            print("Higher")
+        elif estimate == answer:
+            print("It took you", i, "tries but now you're correct!")
+            i += 1
+    return i
+tries = guess()
+
+#exercise4
+
+def computeFact():
+    number = int(input("Provide a positive number for which you would like to determine the factorial: "))
+    while number < 0:
+        number = int(input("PLEASE PROVIDE A POSITIVE VALUE: "))
+        if number >= 0:
+            break
+    if number == 0:
+        print("The factorial of 0 is 1")
+        
+    else:
+        fact = 1 
+        for i in range(1, number+1):
+            fact *= i
+        print("The factorial of", number, "is", fact)
+    return ()
+
+value = computeFact()
+
+
+
+        
+        
+    
