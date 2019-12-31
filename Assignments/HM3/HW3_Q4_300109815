@@ -1,0 +1,7 @@
+def revd(characters):
+    new = ''
+    for x in characters:
+        new = (x*2+new)
+    return new
+    
+print(revd(input("Enter a chain of characters: ")))
