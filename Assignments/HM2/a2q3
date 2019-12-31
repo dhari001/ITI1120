@@ -1,0 +1,59 @@
+import random
+
+
+
+def performTest(operation):
+    i = 0
+    right = 0
+    while i <= 9:
+        if operation == 0:
+            a = random.randint(0,9)
+            b = random.randint(0,9)
+            print(a,"and",b)
+            answer = int(input("What is the sum of the two numbers written above?: "))
+            if answer != (a+b):
+                print("The correct answer is ", a+b)
+                i += 1
+            else:
+                right = right+1
+                i +=  1
+            
+        elif operation == 1:
+            a = random.randint(0,9)
+            b = random.randint(0,9)
+            print(a,"and",b)
+            answer = int(input("What is the product of the two numbers written above?: "))
+            if answer != (a*b):
+                print("The correct answer is ", a*b)
+                i +=1
+            else:
+                right = right+ 1
+                i += 1
+        
+    
+    correctCounts = right
+    print("You got", correctCounts, " questions right.")
+    ## complete your work here ##
+    return correctCounts
+
+
+
+
+
+
+####################################################
+
+    
+    
+print("This software tests you with 10 questions …… ");
+operation = int(input("0) Addition \n1) Multiplication\nPlease make a selection (0 or 1): "))
+      
+correctCounts = performTest(operation)
+        
+if correctCounts <= 6 :
+  print("Please ask your teacher for help.")
+else:
+  print("Congratulations!")
+
+
+#while loop 
