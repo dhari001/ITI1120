@@ -1,0 +1,15 @@
+def longest_run(run):
+    run_length = []
+    size = 1
+    for i in range(len(run)-1):
+        if run[i+1] == run[i]:
+            size+=1
+        else:
+            size = 1
+        run_length.append(size)
+        length = max(run_length)
+    return length   
+                
+                
+print(longest_run((input("Enter a list of numbers: ")).strip().split()))
+
