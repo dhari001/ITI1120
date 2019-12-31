@@ -1,0 +1,81 @@
+#exercise1
+class Car:
+
+    #CONSTRUCTOR
+    def __init__(self, color = 'red', brand = 'Ford', pilot = 'person', speed = 0):
+        self.brand = brand
+        self.color = color
+        self.pilot = pilot
+        self.speed = speed
+        
+    #METHODS
+    def choice_driver(self, name):
+        self.pilot = name
+        return self.pilot
+
+    def accelerate(self, flow,duration):
+        self.speed = flow*duration
+        return self.speed
+
+    def display_all(self):
+        print(self.color, self.brand, "driven by", self.pilot, ", speed = ", self.speed)
+
+        
+    
+
+
+c = Car(color = 'blue')
+c.choice_driver('Juliette')
+c.accelerate(1.9,11)
+
+
+#exercise2
+class BankAccount:
+    #CONSTRUCTOR
+    def __init__(self, name = 'Dupont', balance = 1000):
+        self.name = name 
+        self.balance = balance 
+
+    def deposit(self, add):
+        self.balance += add
+        return self.balance
+
+    def withdraw(self, add):
+        self.balance -= add
+        return self.balance
+
+    def display(self):
+        print("The balance of the bank account of ",self.name,"is",self.balance," dollars")
+        
+a1 = BankAccount("abc",3000)
+a1.deposit(100)
+a1.withdraw(1000)
+a1.display()
+
+
+class AccountSaving(BankAccount):
+
+    def __init__(self, rate = 0.3):
+        self.rate = rate
+
+    def changeRate(self,value):
+        self.rate = value
+        return self.rate
+    
+    def capitalisation(self, numberMonth):
+        print("Capitalisation on", numberMonth, "months at the monthly rate of", self.rate, "%")
+        
+
+    def display(self):
+        self.balance+= ((self.balance*(self.rate/100)) *numberMonth)
+        print("The balance of the bank account for", self.name, "is", self.balance)
+
+c1 = AccountSaving('Smith', 600)
+c1.deposit(300)
+c1.changeRate(0.5)
+c1.capitalisation(12)
+
+
+
+
+
