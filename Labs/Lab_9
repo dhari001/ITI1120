@@ -1,0 +1,135 @@
+#LINEAR SEARCH
+def linear_search(l, num):
+    Nsteps = 0
+    exist = False
+    for v in l:
+        Nsteps += 1
+        if v == num:
+            exist = True
+            break
+    print ("The program is looped,", Nsteps, "times")
+    return exist
+
+l = []
+number_of_elements = int(input("Enter how many numbers you want in the list: "))
+for i in range (0,number_of_elements):
+    number = int(input("Enter a random number: "))
+    l.append(number)
+
+
+num = int(input("Enter the number you want to search: "))
+
+print(linear_search(l,num))
+
+#arraysearch
+def array_search(matrix, num2):
+    Nsteps = 0
+    exist = False
+    i=0
+    for i in range(len(matrix)):
+        Nsteps+=1
+        for j in range(len(matrix[0])):
+            if matrix[i][j] == num2:
+                exist = True
+                i+=1
+                break
+    print ("The program is looped,", Nsteps, "times")
+    return exist
+            
+
+matrix = [[1,2,3],[4,5,6]]
+
+
+num2 = int(input("Enter the number you want to search: "))
+
+print(array_search(matrix,num2))
+
+
+#occurencesarray
+def count_array(matrix1, num3):
+    x = 0
+    for i in range(len(matrix1)):    
+        for j in range(len(matrix1[0])):
+            if matrix1[i][j] == num3:
+                x+=1
+    return x
+
+matrix1 = [[1,2,3],[4,3,6]]
+
+
+num3 = int(input("Enter the number you want to search: "))
+
+print(count_array(matrix1,num3))
+
+#binarysort
+def binary_sorted(list_b, num4):
+    position = -1
+    i = 0
+    j = len(list_b) - 1
+    while i != j + 1:
+        m = (i + j) // 2 
+        if list_b[m] == num4: 
+            position = m
+            break
+        elif list_b[m] < num4: 
+            i = m + 1
+        else: 
+            j = m - 1
+    if position == -1:
+        return False
+    else:
+        return True
+
+list_b = []
+number_of_elements = int(input("Enter how many numbers you want in the list: "))
+for i in range (0,number_of_elements):
+    number = int(input("Enter a random number: "))
+    list_b.append(number)
+
+
+num4 = int(input("Enter the number you want to search: "))
+
+print(binary_sorted(list_b, num4))
+
+
+#sorting
+def sort(sorting):
+    change = True
+    while change:
+        change = False
+        for i in range(len(sorting)-1):
+            if sorting[i]> sorting[i+1]:
+                change = True
+                sorting[i], sorting[i+1]=sorting[i+1], sorting[i]
+    return sorting
+
+sorting = []
+number_of_elements = int(input("Enter how many numbers you want in the list: "))
+for i in range (0,number_of_elements):
+    number = int(input("Enter a random number: "))
+    sorting.append(number)
+
+print(sort(sorting))
+
+#insertsort
+def insert_sort(insertedlist):
+    for i in insertedlist:
+        x = insertedlist.index(i)
+        while x > 0:
+            if insertedlist[x-1]>insertedlist[x]:
+                insertedlist[x-1], insertedlist[x] = insertedlist[x], insertedlist[x-1]
+            else:
+               break
+            x = x-1
+    return insertedlist
+
+insertedlist = [3,6,5,4]
+print(insert_sort(insertedlist))
+
+
+        
+
+
+
+    
+
