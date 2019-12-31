@@ -1,0 +1,32 @@
+def add(matrix):
+    for i in range(len(matrix)):    
+        for j in range(len(matrix[0])): 
+            matrix[i][j]+= 1 #at each index of row and column, the values is increased by 1
+    return matrix
+
+def add_V2(matrix):
+    matrix1 = []
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            matrix1.append(matrix[i][j] + 1)
+    return matrix1
+    
+
+
+#matrix = [[1,2,3],[4,5,6]]
+R = int(input("Enter the number of rows:")) 
+C = int(input("Enter the number of columns:"))
+matrix = [] 
+print("Enter the entries row wise:")
+for i in range(R):         #row entries
+    a =[] 
+    for j in range(C):       #column entries
+         a.append(int(input())) 
+    matrix.append(a)
+for i in range(R): 
+    for j in range(C): 
+        print(matrix[i][j], end = " ") 
+    print()
+
+print(add(matrix))
+print(add_V2(matrix))
