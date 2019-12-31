@@ -1,0 +1,35 @@
+def vote_percentage(voting):
+    count_y = 0
+    count_n = 0
+    voting.remove("abstention")
+    for i in range(len(voting)):
+        if i == "yes":
+            count_y = count_y + 1
+        elif i == "no":
+            count_n = count_n + 1
+       
+        ##################################
+            
+        y = voting.count("yes")
+        n = voting.count("no") 
+        per_y = int((y/len(voting))*100)
+
+        ##################################
+
+        if per_y == 100:
+            print("unanimous")
+        elif 100 > per_y >= 66:
+            print("clear majority")
+        elif  66 > per_y >= 50:
+            print("simple majority")
+        else:
+            print("motion failed")
+     
+        return per_y
+        
+
+print(vote_percentage((input("Enter the different votes: ")).strip().split()))
+
+
+
+
