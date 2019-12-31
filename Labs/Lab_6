@@ -1,0 +1,124 @@
+#exercise1
+s1 = 'good'
+s2 = 'bad'
+s3 = 'crazy'
+
+#1a 
+if 'azy' in s3:
+    print(" 'azy' is in 'crazy' ")
+else:
+    print(" 'azy' is in 'crazy' ")
+
+#1b
+if ' ' in s1:
+    print("There is space in 'good'")
+else:
+    print("There is no space in 'good'")
+
+#1c
+print(s1+s2+s3)
+
+#1d 
+print(s1+" "+s2+" "+s3)
+
+#1e
+print(s3*10)
+
+#1f
+x = len(s1+s2+s3)
+print(x)
+
+#exercise2 
+aha = 'abcdefgh'
+
+#2a
+print(aha[0:4])
+
+#2b
+print(aha[3:6])
+
+#2c
+print(aha[-1])
+
+#2d
+print(aha[5:7])
+
+#2e
+print(aha[3:8])
+
+#2f
+print(aha[5:8])
+
+#2g
+print(aha[0]+aha[3]+aha[-2])
+
+#2h
+print(aha[1]+aha[3])
+
+#exercise3
+s = ''' In 1815, M.Charles-Francois-Bienvenu Myriel was a bishop in Signe. He was a seventy five years old man; he held that position in Digne since 1806. ... '''
+
+#3a 
+nS = s.replace('.',' ')
+nS = nS.replace(',', ' ')
+nS = nS.replace(';',' ')
+print(nS)
+
+#3b
+print(nS.strip())
+
+#3c
+nS = nS.lower()
+print(nS)
+
+#3d
+x = nS.count('in')
+print(x)
+
+#3e
+nS = nS.replace('was', 'is')
+print(nS)
+
+#exercise4 
+
+def count(s,c):
+    y = s.count(c)
+    return y
+
+def count_loops(s,c):
+    i = 0
+    for x in s:
+        if x == 'a':
+            i+= 1
+    return i 
+    
+s = str(input("Enter a character chain: "))
+print(count(s,'a'))
+print(count_loops(s, 'a'))
+
+
+#exercise5 
+def spaces(word):
+    changed = ' '.join(word)
+    return changed
+
+
+change = spaces('important')
+print(change)
+        
+
+
+#exercise6
+
+def code(message):
+    coded = ''
+    for x in range(0,len(message)-1,2):
+       coded = coded+message[x+1]+message[x]
+    return coded
+
+message = str(input("Enter a character chain that you want coded: "))
+print(code(message))
+    
+    
+
+    
